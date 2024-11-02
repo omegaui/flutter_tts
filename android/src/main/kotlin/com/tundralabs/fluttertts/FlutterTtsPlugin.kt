@@ -658,11 +658,10 @@ class FlutterTtsPlugin : MethodCallHandler, FlutterPlugin {
             SYNTHESIZE_TO_FILE_PREFIX + uuid
         )
 
-        val result: Int =
         val musicDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_MUSIC)
         val file = File(musicDir, fileName)
         fullPath = file.path
-        tts!!.synthesizeToFile(text, bundle!!, file!!, SYNTHESIZE_TO_FILE_PREFIX + uuid)
+        val result: Int = tts!!.synthesizeToFile(text, bundle!!, file!!, SYNTHESIZE_TO_FILE_PREFIX + uuid)
         
         if (result == TextToSpeech.SUCCESS) {
             Log.d(tag, "Successfully created file : $fullPath")
